@@ -1,5 +1,9 @@
-import Image from "next/image";
-
 export default function Home() {
-  return <main>test</main>;
+  return (
+    <main>
+      <h1 className=" h1-bold flex-center h-screen">
+        this is test text
+      </h1>
+    </main>
+  );
 }
