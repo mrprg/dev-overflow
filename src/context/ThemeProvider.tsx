@@ -7,7 +7,14 @@ import React, {
   useEffect,
 } from "react";
 
-const ThemeContext = createContext();
+interface ThemeContextType {
+  mode: String;
+  setMode: (mode: String) => void;
+}
+
+const ThemeContext = createContext<
+  ThemeContextType | undefined
+>(undefined);
 
 export function ThemeProvider({
   children,
