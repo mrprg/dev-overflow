@@ -21,21 +21,24 @@ export function ThemeProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [mode, setMode] = useState("");
+  const [mode, setMode] = useState("dark");
 
-  const handleThemeChange = () => {
+  const handleThemeChange = React.useCallback(() => {
+    document.documentElement.classList.remove(
+      "light",
+      "dark"
+    );
+
     if (mode === "dark") {
-      setMode("light");
-      document.documentElement.classList.add("light");
-    } else {
-      setMode("dark");
       document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.add("light");
     }
-  };
+  }, [mode]);
 
   useEffect(() => {
     handleThemeChange();
-  }, [mode]);
+  }, [handleThemeChange]);
 
   return (
     <ThemeContext.Provider value={{ mode, setMode }}>
